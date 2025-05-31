@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "replicaset-go-server"
+  labels:
+    app: "replicaset-go-server"
+
+spec:
+  selector: 
+    matchLabels:
+      app: "goserver"
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: "goserver"
+    
+    spec:
+      containers:
+        - name: "goserver"
+          image: "nakaokagabriel/hello-go:v4"
+          
+          env:
+            - name: "NAME"
+              value: "Gabriel"
+            - name: "AGE"
+              value: "26"
