@@ -19,9 +19,7 @@ spec:
       containers:
         - name: "goserver"
           image: "nakaokagabriel/hello-go:v4"
-          
-          env:
-            - name: "NAME"
-              value: "Gabriel"
-            - name: "AGE"
-              value: "26"
+
+          envFrom:
+            - configMapRef:
+                name: "goserver-env"
